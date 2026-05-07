@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arjun & Aamiya | Wedding Reception</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f8f5ef;
+      font-family: 'Cormorant Garamond', serif;
+      color: #234b36;
+      overflow-x: hidden;
+    }
+
+    .container {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid #c8a96b;
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+      backdrop-filter: blur(4px);
+    }
+
+    .border {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(200,169,107,0.6);
+      border-radius: 18px;
+      pointer-events: none;
+    }
+
+    .top-text {
+      letter-spacing: 4px;
+      font-size: 14px;
+      margin-bottom: 30px;
+      color: #6d6d6d;
+    }
+
+    .names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 72px;
+      color: #234b36;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .and {
+      font-size: 28px;
+      color: #c8a96b;
+      margin: 10px 0;
+    }
+
+    .invite-text {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .details {
+      margin-top: 45px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(200,169,107,0.5);
+    }
+
+    .event {
+      font-size: 38px;
+      margin-bottom: 25px;
+      color: #234b36;
+      font-weight: 600;
+    }
+
+    .info {
+      font-size: 24px;
+      margin: 12px 0;
+      color: #444;
+    }
+
+    .venue {
+      font-size: 28px;
+      color: #234b36;
+      margin-top: 18px;
+      font-weight: 600;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 14px 34px;
+      background: #234b36;
+      color: white;
+      text-decoration: none;
+      border-radius: 40px;
+      font-size: 18px;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background: #1a3527;
+      transform: scale(1.03);
+    }
+
+    .footer {
+      margin-top: 45px;
+      font-size: 18px;
+      color: #777;
+      letter-spacing: 2px;
+    }
+
+    @media(max-width: 600px){
+      .card {
+        padding: 40px 25px;
+      }
+
+      .names {
+        font-size: 54px;
+      }
+
+      .event {
+        font-size: 30px;
+      }
+
+      .info {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="border"></div>
+
+      <div class="top-text">TOGETHER WITH THEIR FAMILIES</div>
+
+      <div class="names">Arjun</div>
+      <div class="and">&</div>
+      <div class="names">Aamiya</div>
+
+      <div class="invite-text">
+        Request the pleasure of your company<br>
+        at their Wedding Reception
+      </div>
+
+      <div class="details">
+        <div class="event">Wedding Reception</div>
+
+        <div class="info">Sunday, May 17, 2026</div>
+        <div class="info">Starts at 05:30 PM</div>
+
+        <div class="venue">Anna Auditorium, Cherthala</div>
+
+        <a class="button" href="https://maps.app.goo.gl/mR9uGfDkSvXnHYp79" target="_blank">
+          View Venue Location
+        </a>
+      </div>
+
+      <div style="margin-top:40px;">
+        <div style="font-size:22px;color:#234b36;font-weight:600;margin-bottom:12px;">
+          Countdown To Celebration
+        </div>
+
+        <div id="countdown" style="font-size:24px;color:#c8a96b;font-weight:600;"></div>
+      </div>
+
+      <div style="margin-top:40px;">
+        <img
+          src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://maps.app.goo.gl/mR9uGfDkSvXnHYp79"
+          alt="QR Code"
+          style="border-radius:16px;border:1px solid #c8a96b;padding:10px;background:white;"
+        />
+
+        <div style="margin-top:14px;font-size:18px;color:#666;letter-spacing:1px;">
+          Scan for Venue Directions
+        </div>
+      </div>
+
+      <div class="footer">
+        WE LOOK FORWARD TO CELEBRATING WITH YOU
+      </div>
+    </div>
+  </div>
+  <script>
+    const countDownDate = new Date("May 17, 2026 17:30:00").getTime();
+
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        days + " Days • " + hours + " Hrs • " + minutes + " Min • " + seconds + " Sec";
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "Reception Day Has Arrived";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
